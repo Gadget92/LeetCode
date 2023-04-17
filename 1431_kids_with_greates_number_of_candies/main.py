@@ -1,10 +1,19 @@
 from typing import List
 
-def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
-    pass
+def kidsWithCandies(candies: List[int], extraCandies: int) -> List[bool]:
+    result = [] 
+    for candies_rec in candies:
+        result.append(candies_rec + extraCandies == max(candies))
+
+    return result
+
+def kidsWithCandies_V2(candies: List[int], extraCandies: int) -> List[bool]:
+    max_candies = max(candies)
+    return [True if rec+extraCandies>=max_candies else False for rec in candies]
+
 
 
 if __name__ == "__main__":
-    kidsWithCandies([2,3,5,1,3], 3)
-    kidsWithCandies([4,2,1,1,2], 1)
-    kidsWithCandies([12,1,12], 10)
+    print(kidsWithCandies([2,3,5,1,3], 3))
+    print(kidsWithCandies([4,2,1,1,2], 1))
+    print(kidsWithCandies([12,1,12], 10))
